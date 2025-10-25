@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Spellgear" load_steps=2 format=3 uid="uid://bhikku16bb8vy"]
+
+[ext_resource type="Script" uid="uid://c1p7oeg6rsqq4" path="res://spellgear.gd" id="1_np700"]
+
+[resource]
+script = ExtResource("1_np700")
+id = "ClockworkMainspring"
+max_level = 5
+level = 1
+metadata/_custom_type_script = "uid://c1p7oeg6rsqq4"
