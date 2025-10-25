@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ki08mjslq50j"]
 
 [ext_resource type="Script" uid="uid://ualuxw2yjjqc" path="res://scenes/ability_node.gd" id="1_lu8ib"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_stut1"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://assets/icon.svg" id="1_stut1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu8ib"]
 content_margin_left = 2.0

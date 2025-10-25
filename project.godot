@@ -13,11 +13,11 @@ config_version=5
 config/name="New Game Project"
 run/main_scene="uid://bfwik7j6xmwrq"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
-SignalBus="*res://signal_bus.gd"
+SignalBus="*res://globals/signal_bus.gd"
 
 [debug]
 
