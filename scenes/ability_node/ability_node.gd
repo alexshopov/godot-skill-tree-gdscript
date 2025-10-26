@@ -1,11 +1,13 @@
 @tool
 class_name AbilityNode
-extends PanelContainer
+extends Control
 
 const ACTIVE_STYLEBOX : StyleBoxFlat = preload("res://scenes/ability_node/ability_node_stylebox_active.tres")
 const INACTIVE_STYLEBOX : StyleBoxFlat = preload("res://scenes/ability_node/ability_node_stylebox_inactive.tres")
 
 
+@onready
+var node_body : Panel = $NodeBody
 @onready
 var level_label : Label = %LevelLabel
 @onready
@@ -17,8 +19,15 @@ var _ability : Ability
 
 
 func _ready():
+	if not _ability:
+		node_body.hide()
+		return
+
+	if not _ability.is_active:
+		node_body.hide()
+
 	ability_icon.texture = _ability.icon
-	add_theme_stylebox_override("panel", INACTIVE_STYLEBOX)
+	node_body.add_theme_stylebox_override("panel", INACTIVE_STYLEBOX)
 
 	if Engine.is_editor_hint():
 		return
@@ -26,15 +35,9 @@ func _ready():
 	_update_label()
 	SignalBus.ability_updated.emit(_ability)
 
-	if not _ability.is_active:
-		hide()
-
-
-# func _process(_delta: float) -> void:
-# 	queue_redraw()
-
-
 func _draw() -> void:
+	if not _ability: return
+
 	for res in _ability.unlocks:
 		var target_node := _get_ability_node(res)
 		
@@ -48,7 +51,7 @@ func _draw() -> void:
 
 func unlock() -> void:
 	AbilityManager.abilities.get(_ability.id).unlock()
-	show()
+	node_body.show()
 
 
 func center() -> Vector2:
@@ -60,7 +63,7 @@ func _on_ability_button_pressed() -> void:
 
 	_ability.level_up()
 	if _ability.level == 1:
-		add_theme_stylebox_override("panel", ACTIVE_STYLEBOX)
+		node_body.add_theme_stylebox_override("panel", ACTIVE_STYLEBOX)
 
 	_update_label()
 
@@ -76,6 +79,8 @@ func _update_label() -> void:
 
 func _get_ability_node(ability : Ability) -> AbilityNode:
 	for ability_node in get_tree().get_nodes_in_group("ability_nodes"):
+		if not ability_node._ability: continue
+
 		if ability_node._ability.id == ability.id:
 			return ability_node	
 

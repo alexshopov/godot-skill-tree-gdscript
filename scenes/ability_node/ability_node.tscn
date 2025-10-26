@@ -1,22 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://ki08mjslq50j"]
+[gd_scene load_steps=15 format=3 uid="uid://ki08mjslq50j"]
 
-[ext_resource type="StyleBox" uid="uid://bc8p2o0i3vvg7" path="res://scenes/ability_node/ability_node_stylebox_inactive.tres" id="1_cr3yn"]
 [ext_resource type="Script" uid="uid://ualuxw2yjjqc" path="res://scenes/ability_node/ability_node.gd" id="1_lu8ib"]
+[ext_resource type="StyleBox" uid="uid://2yl1epiqgdjy" path="res://scenes/ability_node/ability_node_stylebox_active.tres" id="2_ab1rt"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://assets/icon.svg" id="2_cr3yn"]
 
-[node name="AbilityNode" type="PanelContainer" groups=["ability_nodes"]]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cr3yn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ab1rt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nm0gs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mff2c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_heq3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qrv4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpiu0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n1ds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mu0a6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gd73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73hs2"]
+
+[node name="AbilityNode" type="Control" groups=["ability_nodes"]]
 custom_minimum_size = Vector2(74, 105)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 74.0
 offset_bottom = 105.0
 size_flags_horizontal = 2
 size_flags_vertical = 3
 mouse_filter = 2
-theme_override_styles/panel = ExtResource("1_cr3yn")
 script = ExtResource("1_lu8ib")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
+[node name="NodeBody" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 105.0
+theme_override_styles/panel = ExtResource("2_ab1rt")
 
-[node name="LevelLabel" type="Label" parent="VBoxContainer"]
+[node name="VBox" type="VBoxContainer" parent="NodeBody"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelLabel" type="Label" parent="NodeBody/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
@@ -24,18 +60,33 @@ text = "0 / 5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AbilityButton" type="Button" parent="VBoxContainer"]
+[node name="AbilityButton" type="Button" parent="NodeBody/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cr3yn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ab1rt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nm0gs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mff2c")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_heq3d")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_4qrv4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_bpiu0")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0n1ds")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mu0a6")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3gd73")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_73hs2")
 
-[node name="AbilityIcon" type="TextureRect" parent="VBoxContainer/AbilityButton"]
+[node name="AbilityIcon" type="TextureRect" parent="NodeBody/VBox/AbilityButton"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 70)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cr3yn")
 expand_mode = 1
 
-[connection signal="pressed" from="VBoxContainer/AbilityButton" to="." method="_on_ability_button_pressed"]
+[connection signal="pressed" from="NodeBody/VBox/AbilityButton" to="." method="_on_ability_button_pressed"]
