@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://bc8p2o0i3vvg7" path="res://scenes/ability_node/ability_node_stylebox_inactive.tres" id="1_cr3yn"]
 [ext_resource type="Script" uid="uid://ualuxw2yjjqc" path="res://scenes/ability_node/ability_node.gd" id="1_lu8ib"]
 
-[node name="AbilityNode" type="PanelContainer"]
+[node name="AbilityNode" type="PanelContainer" groups=["ability_nodes"]]
 custom_minimum_size = Vector2(74, 105)
 offset_right = 74.0
 offset_bottom = 105.0

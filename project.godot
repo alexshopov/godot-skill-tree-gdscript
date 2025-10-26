@@ -23,3 +23,7 @@ AbilityManager="*res://globals/ability_manager.gd"
 [debug]
 
 gdscript/warnings/unused_signal=0
+
+[global_group]
+
+ability_nodes=""

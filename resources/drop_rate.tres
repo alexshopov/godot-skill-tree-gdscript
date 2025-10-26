@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DropRate" load_steps=2 format=3 uid="uid://5tqnco2pdpum"]
+[gd_resource type="Resource" script_class="DropRateAbility" load_steps=3 format=3 uid="uid://5tqnco2pdpum"]
 
 [ext_resource type="Script" uid="uid://5t2qyhugbc4r" path="res://entities/drop_rate/drop_rate_ability.gd" id="1_inw80"]
+[ext_resource type="Texture2D" uid="uid://bd66dmt3af5ht" path="res://assets/drop_rate.svg" id="1_j18k7"]
 
 [resource]
 script = ExtResource("1_inw80")
 id = "drop_rate"
+icon = ExtResource("1_j18k7")
 max_level = 4
 metadata/_custom_type_script = "uid://5t2qyhugbc4r"

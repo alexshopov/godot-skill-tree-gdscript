@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfwik7j6xmwrq"]
+[gd_scene load_steps=6 format=3 uid="uid://bfwik7j6xmwrq"]
 
 [ext_resource type="PackedScene" uid="uid://ki08mjslq50j" path="res://scenes/ability_node/ability_node.tscn" id="1_adbc8"]
 [ext_resource type="Script" uid="uid://qr21rx0f0bya" path="res://scenes/upgrade_screen/upgrade_screen.gd" id="1_scxlh"]
-[ext_resource type="Texture2D" uid="uid://bd66dmt3af5ht" path="res://assets/drop_rate.svg" id="3_jfq8n"]
 [ext_resource type="Script" uid="uid://bimqk71xx4ai6" path="res://entities/prime_tower/prime_tower_node.gd" id="3_o7111"]
-[ext_resource type="Texture2D" uid="uid://c7hn8kx4dheuo" path="res://assets/main_tower.svg" id="3_uiaal"]
 [ext_resource type="Script" uid="uid://c3gl2ty1632ng" path="res://entities/drop_rate/drop_rate_node.gd" id="5_o7111"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scxlh"]
@@ -67,17 +65,21 @@ size_flags_vertical = 4
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="PrimeTower" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_adbc8")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PrimeTower" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_adbc8")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("3_o7111")
-icon = ExtResource("3_uiaal")
 
-[node name="DropRate" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_adbc8")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="DropRate" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_adbc8")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("5_o7111")
-icon = ExtResource("3_jfq8n")
 
 [node name="TakeDamageButton" type="Button" parent="MarginContainer"]
 layout_mode = 2

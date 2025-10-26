@@ -5,14 +5,6 @@ extends PanelContainer
 const ACTIVE_STYLEBOX : StyleBoxFlat = preload("res://scenes/ability_node/ability_node_stylebox_active.tres")
 const INACTIVE_STYLEBOX : StyleBoxFlat = preload("res://scenes/ability_node/ability_node_stylebox_inactive.tres")
 
-@export
-var icon : CompressedTexture2D :
-	set(value):
-		icon = value
-
-		if ability_icon:
-			ability_icon.texture = icon	
-
 
 @onready
 var level_label : Label = %LevelLabel
@@ -25,7 +17,7 @@ var _ability : Ability
 
 
 func _ready():
-	ability_icon.texture = icon
+	ability_icon.texture = _ability.icon
 	add_theme_stylebox_override("panel", INACTIVE_STYLEBOX)
 
 	if Engine.is_editor_hint():
@@ -37,22 +29,54 @@ func _ready():
 	if not _ability.is_active:
 		hide()
 
-	SignalBus.ability_unlocked.connect(_on_ability_unlocked)
+
+# func _process(_delta: float) -> void:
+# 	queue_redraw()
 
 
+func _draw() -> void:
+	for res in _ability.unlocks:
+		var target_node := _get_ability_node(res)
+		
+		if not target_node or not target_node._ability.is_active: continue
 
-func _on_ability_unlocked(ability_id: String) -> void:
-	if _ability.id == ability_id:
-		AbilityManager.abilities.get(ability_id).unlock()
-		show()
+		var start = center()
+		var end  = target_node.global_position + target_node.center()
+		var color = Color.WHITE_SMOKE
+		draw_line(start, end - global_position, color, 4)
+
+
+func unlock() -> void:
+	AbilityManager.abilities.get(_ability.id).unlock()
+	show()
+
+
+func center() -> Vector2:
+	return custom_minimum_size / 2
 
 
 func _on_ability_button_pressed() -> void:
-	add_theme_stylebox_override("panel", ACTIVE_STYLEBOX)
-	
+	if _ability.level == _ability.max_level: return
+
 	_ability.level_up()
+	if _ability.level == 1:
+		add_theme_stylebox_override("panel", ACTIVE_STYLEBOX)
+
 	_update_label()
+
+	for res in _ability.unlocks:
+		var n := _get_ability_node(res)
+		n.unlock()
+		queue_redraw()
 
 
 func _update_label() -> void:
 	level_label.text = "%d / %d" % [_ability.level, _ability.max_level]
+
+
+func _get_ability_node(ability : Ability) -> AbilityNode:
+	for ability_node in get_tree().get_nodes_in_group("ability_nodes"):
+		if ability_node._ability.id == ability.id:
+			return ability_node	
+
+	return null

@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="PrimeTower" load_steps=2 format=3 uid="uid://bhikku16bb8vy"]
+[gd_resource type="Resource" script_class="PrimeTower" load_steps=5 format=3 uid="uid://bhikku16bb8vy"]
 
 [ext_resource type="Script" uid="uid://dn8pmqq6ts0nb" path="res://entities/prime_tower/prime_tower_ability.gd" id="1_ig7wj"]
+[ext_resource type="Texture2D" uid="uid://c7hn8kx4dheuo" path="res://assets/main_tower.svg" id="1_uplxg"]
+[ext_resource type="Script" uid="uid://cs3halbrv1yo8" path="res://scenes/ability_node/ability.gd" id="3_g0ycx"]
+[ext_resource type="Resource" uid="uid://5tqnco2pdpum" path="res://resources/drop_rate.tres" id="4_uhtwx"]
 
 [resource]
 script = ExtResource("1_ig7wj")
 is_active = true
 id = "prime_tower"
+icon = ExtResource("1_uplxg")
 max_level = 5
+unlocks = Array[ExtResource("3_g0ycx")]([ExtResource("4_uhtwx")])
 metadata/_custom_type_script = "uid://dn8pmqq6ts0nb"
