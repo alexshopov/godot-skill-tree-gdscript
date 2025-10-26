@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PrimeTower" load_steps=2 format=3 uid="uid://bhikku16bb8vy"]
+
+[ext_resource type="Script" uid="uid://dn8pmqq6ts0nb" path="res://entities/prime_tower/prime_tower_ability.gd" id="1_ig7wj"]
+
+[resource]
+script = ExtResource("1_ig7wj")
+is_active = true
+id = "prime_tower"
+max_level = 5
+metadata/_custom_type_script = "uid://dn8pmqq6ts0nb"

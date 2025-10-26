@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DropRate" load_steps=2 format=3 uid="uid://5tqnco2pdpum"]
+
+[ext_resource type="Script" uid="uid://5t2qyhugbc4r" path="res://entities/drop_rate/drop_rate_ability.gd" id="1_inw80"]
+
+[resource]
+script = ExtResource("1_inw80")
+id = "drop_rate"
+max_level = 4
+metadata/_custom_type_script = "uid://5t2qyhugbc4r"

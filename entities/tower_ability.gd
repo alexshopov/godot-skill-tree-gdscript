@@ -1,4 +1,4 @@
-class_name Spellgear
+class_name TowerAbility
 extends Ability
 
 @export
@@ -12,7 +12,6 @@ func level_up() -> void:
 	var level_fn: Callable = func ():
 		max_hp = base_hp * level
 		hp += base_hp
-
 
 	super._on_level_up(level_fn)
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://ki08mjslq50j"]
+
+[ext_resource type="StyleBox" uid="uid://bc8p2o0i3vvg7" path="res://scenes/ability_node/ability_node_stylebox_inactive.tres" id="1_cr3yn"]
+[ext_resource type="Script" uid="uid://ualuxw2yjjqc" path="res://scenes/ability_node/ability_node.gd" id="1_lu8ib"]
+
+[node name="AbilityNode" type="PanelContainer"]
+custom_minimum_size = Vector2(74, 105)
+offset_right = 74.0
+offset_bottom = 105.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_cr3yn")
+script = ExtResource("1_lu8ib")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0 / 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+
+[node name="AbilityIcon" type="TextureRect" parent="VBoxContainer/AbilityButton"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/AbilityButton" to="." method="_on_ability_button_pressed"]

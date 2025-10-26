@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfwik7j6xmwrq"]
+[gd_scene load_steps=8 format=3 uid="uid://bfwik7j6xmwrq"]
 
-[ext_resource type="PackedScene" uid="uid://ki08mjslq50j" path="res://scenes/ability_node.tscn" id="1_adbc8"]
-[ext_resource type="Script" uid="uid://qr21rx0f0bya" path="res://scenes/upgrade_screen.gd" id="1_scxlh"]
-[ext_resource type="Resource" uid="uid://bhikku16bb8vy" path="res://resources/clockwork_mainspring.tres" id="3_3vsiv"]
+[ext_resource type="PackedScene" uid="uid://ki08mjslq50j" path="res://scenes/ability_node/ability_node.tscn" id="1_adbc8"]
+[ext_resource type="Script" uid="uid://qr21rx0f0bya" path="res://scenes/upgrade_screen/upgrade_screen.gd" id="1_scxlh"]
+[ext_resource type="Texture2D" uid="uid://bd66dmt3af5ht" path="res://assets/drop_rate.svg" id="3_jfq8n"]
+[ext_resource type="Script" uid="uid://bimqk71xx4ai6" path="res://entities/prime_tower/prime_tower_node.gd" id="3_o7111"]
+[ext_resource type="Texture2D" uid="uid://c7hn8kx4dheuo" path="res://assets/main_tower.svg" id="3_uiaal"]
+[ext_resource type="Script" uid="uid://c3gl2ty1632ng" path="res://entities/drop_rate/drop_rate_node.gd" id="5_o7111"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scxlh"]
 content_margin_left = 20.0
@@ -51,23 +54,30 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "HP : 0"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="DropRateLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Drop Rate: 1.0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="CenterNode" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="ClockworkMainspring" parent="MarginContainer/VBoxContainer/CenterNode" instance=ExtResource("1_adbc8")]
+[node name="PrimeTower" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_adbc8")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
-mouse_filter = 0
-ability_resrouce = ExtResource("3_3vsiv")
+script = ExtResource("3_o7111")
+icon = ExtResource("3_uiaal")
+
+[node name="DropRate" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_adbc8")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("5_o7111")
+icon = ExtResource("3_jfq8n")
 
 [node name="TakeDamageButton" type="Button" parent="MarginContainer"]
 layout_mode = 2

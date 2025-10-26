@@ -2,15 +2,23 @@ class_name Ability
 extends Resource
 
 @export
+var is_active : bool
+@export
 var id : String
 @export
 var max_level : int
 @export
 var level : int
-
+@export
+var unlocks: Array[String]
 
 func level_up() -> void:
 	pass
+
+func unlock() -> void:
+	if is_active: return
+
+	is_active = true
 
 
 func _on_level_up(level_fn: Callable) -> void:
@@ -18,6 +26,11 @@ func _on_level_up(level_fn: Callable) -> void:
 		return
 
 	level += 1
+	if (level > 0):
+		for ability in unlocks:
+			SignalBus.ability_unlocked.emit(ability)
+
+
 	level_fn.call()
 
 	SignalBus.ability_updated.emit(self)
@@ -26,6 +39,7 @@ func _on_level_up(level_fn: Callable) -> void:
 func _create_instance() -> Resource:
 	var instance : Ability = self.duplicate()
 
+	instance.is_active = false
 	instance.id = id
 	instance.max_level = max_level
 	instance.level = level
