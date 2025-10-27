@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RateOfFire" load_steps=3 format=3 uid="uid://cwskavh338eay"]
+
+[ext_resource type="Texture2D" uid="uid://cc2v601mg4lrq" path="res://assets/rate_of_fire.svg" id="1_g6y1n"]
+[ext_resource type="Script" uid="uid://1ibte6thov3u" path="res://abilities/rate_of_fire.gd" id="1_v32yy"]
+
+[resource]
+script = ExtResource("1_v32yy")
+id = "rate_of_fire"
+icon = ExtResource("1_g6y1n")
+max_level = 3
+metadata/_custom_type_script = "uid://1ibte6thov3u"

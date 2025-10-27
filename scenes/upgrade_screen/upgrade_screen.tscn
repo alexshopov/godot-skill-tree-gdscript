@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfwik7j6xmwrq"]
+[gd_scene load_steps=4 format=3 uid="uid://bfwik7j6xmwrq"]
 
 [ext_resource type="PackedScene" uid="uid://ki08mjslq50j" path="res://scenes/ability_node/ability_node.tscn" id="1_adbc8"]
 [ext_resource type="Script" uid="uid://qr21rx0f0bya" path="res://scenes/upgrade_screen/upgrade_screen.gd" id="1_scxlh"]
-[ext_resource type="Script" uid="uid://bimqk71xx4ai6" path="res://entities/prime_tower/prime_tower_node.gd" id="3_o7111"]
-[ext_resource type="Script" uid="uid://c3gl2ty1632ng" path="res://entities/drop_rate/drop_rate_node.gd" id="5_o7111"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scxlh"]
 content_margin_left = 20.0
@@ -36,23 +34,24 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="LevelLabel" type="Label" parent="MarginContainer/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Level : 0"
 
-[node name="HPLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="HPLabel" type="Label" parent="MarginContainer/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "HP : 0"
 
-[node name="DropRateLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="DropRateLabel" type="Label" parent="MarginContainer/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -61,18 +60,25 @@ text = "Drop Rate: 1.0"
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 40
+theme_override_constants/separation = 60
 alignment = 1
 
 [node name="Column01" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(74, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 60
 alignment = 1
 
-[node name="AbilityNode" parent="MarginContainer/HBoxContainer/Column01" instance=ExtResource("1_adbc8")]
+[node name="DamageIncrease" parent="MarginContainer/HBoxContainer/Column01" instance=ExtResource("1_adbc8")]
+z_index = 1
 layout_mode = 2
-size_flags_horizontal = 4
+ability_id = "all_towers_damage_increase"
+
+[node name="RateOfFireIncrease" parent="MarginContainer/HBoxContainer/Column01" instance=ExtResource("1_adbc8")]
+z_index = 1
+layout_mode = 2
+ability_id = "rate_of_fire"
 
 [node name="Column02" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -82,7 +88,8 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-script = ExtResource("3_o7111")
+size_flags_vertical = 1
+ability_id = "prime_tower"
 
 [node name="Column3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -92,7 +99,8 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-script = ExtResource("5_o7111")
+size_flags_vertical = 1
+ability_id = "drop_rate"
 
 [node name="TakeDamageButton" type="Button" parent="MarginContainer"]
 layout_mode = 2

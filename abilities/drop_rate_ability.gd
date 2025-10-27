@@ -9,6 +9,10 @@ var bonus_drop_rate : float = 0.25
 var drop_rate : float = base_drop_rate
 
 
+func _init() -> void:
+	id = "drop_rate"
+
+
 func level_up() -> void:
 	var level_fn: Callable = func ():
 		drop_rate += bonus_drop_rate

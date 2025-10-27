@@ -12,7 +12,7 @@ var max_level : int
 @export
 var level : int
 @export
-var unlocks: Array[Ability]
+var unlocks: Array[String] = []
 
 
 func level_up() -> void:

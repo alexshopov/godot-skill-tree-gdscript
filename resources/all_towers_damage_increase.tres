@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AllTowersDamageIncrease" load_steps=4 format=3 uid="uid://dd1ou2q4wbklo"]
+
+[ext_resource type="Script" uid="uid://c5u8r3u5vk3c2" path="res://abilities/all_towers_damage_increase.gd" id="1_4ajkb"]
+[ext_resource type="Texture2D" uid="uid://d4evy3c53gfbs" path="res://assets/damage_increase.svg" id="1_64ukh"]
+[ext_resource type="Script" uid="uid://cs3halbrv1yo8" path="res://scenes/ability_node/ability.gd" id="2_64ukh"]
+
+[resource]
+script = ExtResource("1_4ajkb")
+id = "all_towers_damage_increase"
+icon = ExtResource("1_64ukh")
+max_level = 5
+metadata/_custom_type_script = "uid://c5u8r3u5vk3c2"
