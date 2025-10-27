@@ -51,6 +51,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "HP : 0"
 
+[node name="DPSLabel" type="Label" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "DPS: 100"
+
 [node name="DropRateLabel" type="Label" parent="MarginContainer/StatsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
